@@ -1,0 +1,6 @@
+*.xcbkptlist
+.DS_Store
+SwiftJoke/Lib/.DS_Store
+SwiftJoke.xcodeproj/xcuserdata/
+SwiftJoke.xcworkspace/xcuserdata/*
+SwiftJoke.xcodeproj/project.xcworkspace/xcuserdata/
