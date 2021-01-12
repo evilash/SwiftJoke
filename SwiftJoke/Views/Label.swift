@@ -17,9 +17,3 @@ struct Label: View {
             .padding(8)
     }
 }
-
-struct Label_Previews: PreviewProvider {
-    static var previews: some View {
-        Label(text: "")
-    }
-}
