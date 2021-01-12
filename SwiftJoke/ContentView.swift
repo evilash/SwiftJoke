@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            GifImage()
             Label(text: "Joke")
             Label(text: "Punchline")
         }
@@ -19,5 +20,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 12 mini")
     }
 }
