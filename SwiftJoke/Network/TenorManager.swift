@@ -15,15 +15,12 @@ struct TenorManager {
     private let apiKey = TenorAPI.apiKey
     private let filters = TenorAPI.filters
     
-    func getTenorConstructedUrlString(with query: String) -> String {
-        let formattedQuery = query.replacingOccurrences(of: " ", with: "+")
-        
-        return "\(baseURL)?key=\(apiKey)&q=\(formattedQuery)&\(filters)"
-    }
-    
-    func getTenorReponse(from urlWithPunchline: String) -> TenorResponsePublisher {
+    func getTenorReponse(using query: String) -> TenorResponsePublisher {
         let session = URLSession(configuration: .default)
-        let url = try! NetworkManager.build { urlWithPunchline }
+        let url = try! NetworkManager.build {
+            let formattedQuery = query.replacingOccurrences(of: " ", with: "+")
+            return "\(baseURL)?key=\(apiKey)&q=\(formattedQuery)&\(filters)"
+        }
         
         return session.dataTaskPublisher(for: url)
             .tryMap { response in
