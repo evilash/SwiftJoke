@@ -8,10 +8,10 @@
 import Foundation
 
 struct JokeResponse: Decodable {
-    let body: [Body]
+    let body: [JokeBody]
 }
 
-struct Body: Decodable {
+struct JokeBody: Decodable {
     let setup: String
     let punchline: String
 }
