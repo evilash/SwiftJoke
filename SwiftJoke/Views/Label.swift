@@ -12,7 +12,7 @@ struct Label: View {
     
     var body: some View {
         Text(text)
-            .font(.largeTitle)
+            .font(.title2)
             .foregroundColor(.blue)
             .padding(8)
     }

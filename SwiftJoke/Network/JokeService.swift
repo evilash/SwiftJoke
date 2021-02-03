@@ -1,5 +1,5 @@
 //
-//  JokeManager.swift
+//  JokeService.swift
 //  SwiftJoke
 //
 //  Created by Matt M Smith on 1/23/21.
@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-struct JokeManager {
+struct JokeService {
     typealias JokeResponsePublisher = AnyPublisher<JokeResponse, JokeError>
     
     let urlString = JokeAPI.url
@@ -30,6 +30,7 @@ struct JokeManager {
                 return response.data
             }
             .decode(type: JokeResponse.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .mapError { JokeError.map($0) }
             .eraseToAnyPublisher()
     }
