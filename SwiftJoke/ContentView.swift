@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var tell = JokeViewModel()
+    @ObservedObject private var viewModel = JokeViewModel()
     
     var body: some View {
         VStack {
-            GifImage()
-            Label(text: self.tell.joke.setup)
-            Label(text: self.tell.joke.punchline)
-        }.onAppear {
-            self.tell.fetchJoke()
+            Label(text: self.viewModel.joke.setup)
+            Label(text: self.viewModel.joke.punchline)
+            
+            HStack {
+                JokePicker()
+                TellJokeButton(jokeViewModel: self.viewModel)
+            }
         }
     }
 }
