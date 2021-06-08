@@ -12,11 +12,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            GifImage()
-            Label(text: self.tell.joke.setup)
-            Label(text: self.tell.joke.punchline)
+            Label(text: tell.joke.setup)
+            Label(text: tell.joke.punchline)
         }.onAppear {
-            self.tell.fetchJoke()
+            tell.fetchJoke()
         }
     }
 }
