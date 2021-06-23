@@ -14,8 +14,8 @@ class JokeViewModel: ObservableObject {
     var cancellable: AnyCancellable?
     private let service = JokeService()
     
-    func fetchJoke() {
-        cancellable = self.service.getJokeReponse()
+    func fetchJoke(of jokeType: JokeType) {
+        cancellable = self.service.getJokeReponse(of: jokeType)
             .sink(receiveCompletion: { (completion) in
             switch completion {
             case .finished: break

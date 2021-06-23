@@ -11,14 +11,15 @@ import Foundation
 struct JokeService {
     typealias JokeResponsePublisher = AnyPublisher<JokeResponse, JokeError>
     
-    let urlString = JokeAPI.url
-    let headers = JokeAPI.headers
-    
-    func getJokeReponse() -> JokeResponsePublisher {
-        let url = try! NetworkManager.build { urlString }
+    func getJokeReponse(of jokeType: JokeType) -> JokeResponsePublisher {
+        guard let url = JokeAPI.url(using: jokeType) else {
+            return Fail(error: .invalidURL)
+                .eraseToAnyPublisher()
+        }
+        
         let session = URLSession(configuration: .default)
         var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 15)
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = JokeAPI.headers
         
         return session.dataTaskPublisher(for: request)
             .tryMap { response in

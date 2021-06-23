@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var tell = JokeViewModel()
+    @State private var jokeType: JokeType = .general
     
     var body: some View {
         VStack {
-            Label(text: tell.joke.setup)
-            Label(text: tell.joke.punchline)
-        }.onAppear {
-            tell.fetchJoke()
+            JokeAndPunchLineView(jokeType: $jokeType)
+            JokePickerView(jokeType: $jokeType)
         }
     }
 }
