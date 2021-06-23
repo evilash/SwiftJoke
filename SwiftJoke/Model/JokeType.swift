@@ -11,6 +11,7 @@ enum JokeType: String, CaseIterable, Identifiable {
     case general = "general"
     case programming = "programming"
     case knockKnock = "knock-knock"
+    case random
     
     var id: String { self.rawValue }
 }
