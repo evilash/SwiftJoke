@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class JokeViewModel: ObservableObject {
-    @Published var joke = Joke(setup: "", punchline: "")
+    @Published var joke = Joke(setup: "Select a joke type below!", punchline: "")
     
     var cancellable: AnyCancellable?
     private let service = JokeService()
