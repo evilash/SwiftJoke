@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct JokeAndPunchLineView: View {
-    @ObservedObject private var tell = JokeViewModel()
+    @ObservedObject private var joke = JokeViewModel()
     @Binding var jokeType: JokeType
     
     var body: some View {
         VStack {
-            Label(text: tell.joke.setup)
-            Label(text: tell.joke.punchline)
+            SetupText(setup: joke.setup)
+            PunchlineText(punchline: joke.punchline)
         }.onChange(of: jokeType) { type in
-            tell.fetchJoke(of: type)
+            joke.fetchJoke(of: type)
         }
     }
 }
