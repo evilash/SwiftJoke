@@ -9,11 +9,12 @@ import SwiftUI
 
 struct Label: View {
     let text: String
+    var color: Color = .blue
     
     var body: some View {
         Text(text)
             .font(.title2)
-            .foregroundColor(.blue)
+            .foregroundColor(color)
             .padding(8)
     }
 }

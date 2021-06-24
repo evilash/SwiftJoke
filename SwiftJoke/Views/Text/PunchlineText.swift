@@ -11,7 +11,7 @@ struct PunchlineText: View {
     let punchline: String
     
     var body: some View {
-        Label(text: punchline)
+        Label(text: punchline, color: .red)
             .animation(.easeIn)
     }
 }
