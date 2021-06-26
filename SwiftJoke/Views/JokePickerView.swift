@@ -12,7 +12,7 @@ struct JokePickerView: View {
     
     var body: some View {
         HStack(spacing: 6.0) {
-            Picker("What's Your Poison:", selection: $jokeType) {
+            Picker("", selection: $jokeType) {
                 ForEach(JokeType.allCases) {
                     Text($0.id).tag($0)
                 }
